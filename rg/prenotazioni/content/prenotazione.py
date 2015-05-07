@@ -11,12 +11,7 @@ from zope.interface import implements
 
 
 OVERBOOKED_MESSAGE = _('overbook_message',
-                       default=u"Siamo spiacenti, "
-                       u"è già stato preso un appuntamento "
-                       u"nella stessa fascia oraria, "
-                       u"premere il pulsante "
-                       u"ANNULLA per effettuare una nuova richiesta di "
-                       u"prenotazione")
+                       default=u"Sorry there is already a reservation in this time slot, press the CANCEL button to make a new reservation")
 
 
 PrenotazioneSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
