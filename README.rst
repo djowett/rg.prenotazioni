@@ -1,3 +1,6 @@
+  Note: current changes on this branch for the purposes of translation only, and are untested.
+
+
 A **booking product for Plone** which allows to reserve time slots throughout the week.
 
 .. contents::
