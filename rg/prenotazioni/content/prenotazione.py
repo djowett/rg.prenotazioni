@@ -48,7 +48,8 @@ PrenotazioneSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         storage=atapi.AnnotationStorage(),
         vocabulary_factory='rg.prenotazioni.tipologies',
         widget=atapi.SelectionWidget(
-            label=_(u"booking tipology"),
+            label=_(u"Booking Type"),
+            description=_(u"Type of meeting you are booking"),
         ),
         searchable=True,
         default='',
@@ -58,6 +59,7 @@ PrenotazioneSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         storage=atapi.AnnotationStorage(),
         widget=atapi.StringWidget(
             label=_(u'Booking date'),
+            description=_(u'Date that booking was made'),
             visible={'edit': 'hidden', 'view': 'visible'},
         ),
         required=True,
@@ -67,8 +69,7 @@ PrenotazioneSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         storage=atapi.AnnotationStorage(),
         widget=atapi.StringWidget(
             label=_(u"Company"),
-            description=_(u"Inserisci la denominazione dell'azienda "
-                          u"del richiedente"),
+            description=_(u"Applicant's company name"),
         ),
         default='',
         searchable=True,
@@ -77,8 +78,8 @@ PrenotazioneSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         'gate',
         storage=atapi.AnnotationStorage(),
         widget=atapi.StringWidget(
-            label=_(u"Gate"),
-            description=_(u"Sportello a cui presentarsi"),
+            label=_(u"Resource"),
+            description=_(u"Name of the resource you are booking"),
         ),
         searchable=True,
         default='',
@@ -112,7 +113,7 @@ PrenotazioneSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 # they work well with the python bridge properties.
 
 PrenotazioneSchema['title'].storage = atapi.AnnotationStorage()
-PrenotazioneSchema['title'].widget.label = _(u"Nome e Cognome")
+PrenotazioneSchema['title'].widget.label = _(u"Full name")
 PrenotazioneSchema['title'].widget.description = _(u"")
 PrenotazioneSchema['title'].searchable = True
 
@@ -148,7 +149,7 @@ PrenotazioneSchema['excludeFromNav'].schemata = 'default'
 
 class Prenotazione(base.ATCTContent):
 
-    """Description of the Example Type"""
+    """A Reservation"""
     implements(IPrenotazione)
 
     security = ClassSecurityInfo()
